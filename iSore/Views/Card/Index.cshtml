@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Card>
+
+@{
+  var cards = Model ?? Enumerable.Empty<Card>();
+    ViewBag.Title = "Index";
+}
+
+<p>
+    @Html.ActionLink("Create", "Create")
+</p>
+
+<table>
+<thead><tr><td colspan="2">cards</td></tr></thead>
+<tbody>
+@foreach (var item in cards) {
+  <tr>
+    <td>@item.Title</td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+        @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+    </td>
+  </tr>
+}
+</tbody>
+<tfoot><tr><td colspan="2"><span class="link">prev</span><span>@Html.PageIndexes(Model)</span><span class="link">next</span></td></tr></tfoot>
+</table>

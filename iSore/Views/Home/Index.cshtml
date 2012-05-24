@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Lane>
+@{
+  var lanes = @Model ?? Enumerable.Empty<Lane>();
+    ViewBag.Title = "Home Page";
+}
+
+<div id="lanesModule">
+@foreach(var lane in lanes)
+{
+  <span id="@lane.Name" class="lane">@Html.Cards(lane.Cards)</span>
+}
+</div>
